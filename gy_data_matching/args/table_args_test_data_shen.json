@@ -1,0 +1,70 @@
+{
+    "1998": {
+        "ent_name":"B02",
+        "district":"B056",
+        "r_name":"B031",
+        },
+    "1999": {
+        "ent_name":"企业名称",
+        "district":"省地县码",
+        "r_name":"法人代表姓名",
+        },
+    "2000": {
+        "ent_name":"B02",
+        "district":"B056",
+        "r_name":"B031",
+        },
+    "2001": {
+        "ent_name":"B02",
+        "district":"B056",
+        "r_name":"B031",
+        },
+    "2002": {
+        "ent_name":"法人单位",
+        "district":"省地县码",
+        "r_name":"法人",
+        },
+    "2003": {
+        "ent_name":"法人单位",
+        "district":"省地县码",
+        "r_name":"法人",
+        },
+    "2004": {
+        "ent_name":"B02",
+        "district":"B056",
+        "r_name":"B031",
+        },
+    "2005": {
+        "ent_name":"B02",
+        "district":"B056",
+        "r_name":"B031",
+        },
+    "2006": {
+        "ent_name":"B02",
+        "district":"B056",
+        "r_name":"B031",
+        },
+    "2007": {
+        "ent_name":"法人单位名称",
+        "district":"行政区划代码",
+        "r_name":"法定代表人",
+        },
+    "2008": {
+        "ent_name":"法人单位",
+        "district":"行政区别",
+        },
+    "2009": {
+        "ent_name":"法人单位",
+        "district":"行政区别",
+        },
+    "2012": {
+        "ent_name":"详细名称",
+        "district":"省码",
+        "r_name":"法定代表人",
+        },
+    "2013": {
+        "ent_name":"单位详细名称",
+        "district":"_行政区划代码",
+        "r_name":"法定代表人",
+        }
+}

@@ -1,0 +1,28 @@
+{
+  "oracle": {"db_dialect": "Oracle"
+             , "db_driver": "cx_Oracle"
+             , "user": "VW_NOV06"
+             , "password": "C372M5c590"
+             , "host": "172.17.32.2"
+             , "sid": "orcl"
+             , "dbname": "CDB_NOV"
+             , "charset": "UTF8"
+             , "data_type": "DataFrame"
+             }
+  , "mysql_beida": {"db_dialect": "MySQL"
+                    , "db_driver": "pymysql"
+                    , "user": "root"
+                    , "password": "122321"
+                    , "host": "localhost"
+                    , "dbname": "gyqysj"
+                    , "data_type": "DataFrame"
+                    }
+  , "mysql_shen":{"db_dialect": "MySQL"
+                  , "db_driver": "pymysql"
+                  , "user": "root"
+                  , "password": "122321"
+                  , "host": "localhost"
+                  , "dbname": "gyqysj"
+                  , "data_type": "DataFrame"
+                  }
+}

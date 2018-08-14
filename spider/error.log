@@ -1,0 +1,2071 @@
+https://www.youbianku.cn/postcode?page=0
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563F345C0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/78?page=2 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563F345C0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 94, in go
+    html = requests_manager.get_html(url2, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/78?page=2 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563F345C0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=1
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\contrib\pyopenssl.py", line 441, in wrap_socket
+    cnx.do_handshake()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\OpenSSL\SSL.py", line 1907, in do_handshake
+    self._raise_ssl_error(self._ssl, result)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\OpenSSL\SSL.py", line 1631, in _raise_ssl_error
+    raise SysCallError(errno, errorcode.get(errno))
+OpenSSL.SSL.SysCallError: (10054, 'WSAECONNRESET')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 326, in connect
+    ssl_context=context)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\ssl_.py", line 329, in ssl_wrap_socket
+    return context.wrap_socket(sock, server_hostname=server_hostname)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\contrib\pyopenssl.py", line 448, in wrap_socket
+    raise ssl.SSLError('bad handshake: %r' % e)
+ssl.SSLError: ("bad handshake: SysCallError(10054, 'WSAECONNRESET')",)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=1 (Caused by SSLError(SSLError("bad handshake: SysCallError(10054, 'WSAECONNRESET')",),))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 506, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=1 (Caused by SSLError(SSLError("bad handshake: SysCallError(10054, 'WSAECONNRESET')",),))
+
+
+https://www.youbianku.cn/postcode?page=2
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563F3DEF0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=2 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563F3DEF0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=2 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563F3DEF0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=3
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563E58518>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=3 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563E58518>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=3 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563E58518>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=4
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563F3DDA0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=4 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563F3DDA0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=4 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563F3DDA0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=5
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563E58940>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=5 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563E58940>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=5 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001E563E58940>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=7
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 380, in _make_request
+    httplib_response = conn.getresponse(buffering=True)
+TypeError: getresponse() got an unexpected keyword argument 'buffering'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 79, in go
+    html = requests_manager.get_html(url1, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 383, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\ProgramData\Anaconda3\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\ProgramData\Anaconda3\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\ProgramData\Anaconda3\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\ProgramData\Anaconda3\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\contrib\pyopenssl.py", line 280, in recv_into
+    return self.connection.recv_into(*args, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\OpenSSL\SSL.py", line 1813, in recv_into
+    result = _lib.SSL_read(self._ssl, buf, nbytes)
+KeyboardInterrupt
+
+
+https://www.youbianku.cn/postcode?page=2
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA377B26D8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/221?page=3 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA377B26D8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 94, in go
+    html = requests_manager.get_html(url2, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/221?page=3 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA377B26D8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=4
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37645400>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/1741?page=1 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37645400>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 94, in go
+    html = requests_manager.get_html(url2, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/1741?page=1 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37645400>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=6
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 387, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 383, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\ProgramData\Anaconda3\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\ProgramData\Anaconda3\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\ProgramData\Anaconda3\lib\http\client.py", line 266, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 357, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 387, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 383, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\ProgramData\Anaconda3\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\ProgramData\Anaconda3\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\ProgramData\Anaconda3\lib\http\client.py", line 266, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 79, in go
+    html = requests_manager.get_html(url1, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 490, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
+
+
+https://www.youbianku.cn/postcode?page=7
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37823668>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/024417-0 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37823668>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 79, in go
+    html = requests_manager.get_html(url1, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/024417-0 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37823668>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=8
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\contrib\pyopenssl.py", line 441, in wrap_socket
+    cnx.do_handshake()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\OpenSSL\SSL.py", line 1907, in do_handshake
+    self._raise_ssl_error(self._ssl, result)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\OpenSSL\SSL.py", line 1631, in _raise_ssl_error
+    raise SysCallError(errno, errorcode.get(errno))
+OpenSSL.SSL.SysCallError: (10054, 'WSAECONNRESET')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 326, in connect
+    ssl_context=context)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\ssl_.py", line 329, in ssl_wrap_socket
+    return context.wrap_socket(sock, server_hostname=server_hostname)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\contrib\pyopenssl.py", line 448, in wrap_socket
+    raise ssl.SSLError('bad handshake: %r' % e)
+ssl.SSLError: ("bad handshake: SysCallError(10054, 'WSAECONNRESET')",)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/3709?page=3 (Caused by SSLError(SSLError("bad handshake: SysCallError(10054, 'WSAECONNRESET')",),))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 94, in go
+    html = requests_manager.get_html(url2, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 506, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/3709?page=3 (Caused by SSLError(SSLError("bad handshake: SysCallError(10054, 'WSAECONNRESET')",),))
+
+
+https://www.youbianku.cn/postcode?page=9
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37646C18>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=9 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37646C18>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=9 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37646C18>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=10
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37823DD8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=10 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37823DD8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=10 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37823DD8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=11
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37DC51D0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/3250?page=3 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37DC51D0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 94, in go
+    html = requests_manager.get_html(url2, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/3250?page=3 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37DC51D0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=12
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37DC5518>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=12 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37DC5518>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=12 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37DC5518>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=13
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37646198>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=13 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37646198>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=13 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37646198>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=14
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378230B8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=14 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378230B8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=14 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378230B8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=15
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA38FBC978>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=15 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA38FBC978>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=15 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA38FBC978>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=16
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37D8F3C8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/4276?page=4 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37D8F3C8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 94, in go
+    html = requests_manager.get_html(url2, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/4276?page=4 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37D8F3C8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=21
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA3991E198>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/052565-0 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA3991E198>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 79, in go
+    html = requests_manager.get_html(url1, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/052565-0 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA3991E198>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=22
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA3991E6D8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=22 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA3991E6D8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=22 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA3991E6D8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=23
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37D24048>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=23 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37D24048>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=23 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37D24048>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=25
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D91D0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/062355-0 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D91D0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 79, in go
+    html = requests_manager.get_html(url1, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/062355-0 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D91D0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=26
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9D30>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=26 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9D30>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=26 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9D30>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=27
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA70B8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=27 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA70B8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=27 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA70B8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=28
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA75C0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/6522?page=2 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA75C0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 94, in go
+    html = requests_manager.get_html(url2, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/6522?page=2 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA75C0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=29
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\contrib\pyopenssl.py", line 441, in wrap_socket
+    cnx.do_handshake()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\OpenSSL\SSL.py", line 1907, in do_handshake
+    self._raise_ssl_error(self._ssl, result)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\OpenSSL\SSL.py", line 1631, in _raise_ssl_error
+    raise SysCallError(errno, errorcode.get(errno))
+OpenSSL.SSL.SysCallError: (10054, 'WSAECONNRESET')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 326, in connect
+    ssl_context=context)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\ssl_.py", line 329, in ssl_wrap_socket
+    return context.wrap_socket(sock, server_hostname=server_hostname)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\contrib\pyopenssl.py", line 448, in wrap_socket
+    raise ssl.SSLError('bad handshake: %r' % e)
+ssl.SSLError: ("bad handshake: SysCallError(10054, 'WSAECONNRESET')",)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/7187?page=1 (Caused by SSLError(SSLError("bad handshake: SysCallError(10054, 'WSAECONNRESET')",),))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 94, in go
+    html = requests_manager.get_html(url2, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 506, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/7187?page=1 (Caused by SSLError(SSLError("bad handshake: SysCallError(10054, 'WSAECONNRESET')",),))
+
+
+https://www.youbianku.cn/postcode?page=30
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D96A0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=30 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D96A0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=30 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D96A0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=31
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9470>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=31 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9470>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=31 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9470>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=32
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA76D8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/7129?page=1 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA76D8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 94, in go
+    html = requests_manager.get_html(url2, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/7129?page=1 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA76D8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=33
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA7C88>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=33 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA7C88>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=33 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA7C88>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=34
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9128>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=34 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9128>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=34 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9128>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=35
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D94E0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/40091?page=0 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D94E0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 94, in go
+    html = requests_manager.get_html(url2, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/40091?page=0 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D94E0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=36
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D90F0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=36 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D90F0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=36 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D90F0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=37
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA7C50>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=37 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA7C50>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 72, in go
+    html = requests_manager.get_html(url0, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode?page=37 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA37CA7C50>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+https://www.youbianku.cn/postcode?page=38
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 141, in _new_conn
+    (self.host, self.port), self.timeout, **extra_kw)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 83, in create_connection
+    raise err
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connection.py", line 150, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9F28>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\ProgramData\Anaconda3\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/1205?page=0 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9F28>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/gooddata/PycharmProjects/GYQY_data/spider/crawler.py", line 94, in go
+    html = requests_manager.get_html(url2, charset='utf8')
+  File "C:\Users\gooddata\PycharmProjects\GYQY_data\spider\requests_manager.py", line 77, in get_html
+    resp = requests.get(url, headers=headers, cookies=cookies)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\requests\adapters.py", line 508, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.youbianku.cn', port=443): Max retries exceeded with url: /postcode/1205?page=0 (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x000001EA378D9F28>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+

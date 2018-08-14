@@ -1,0 +1,10 @@
+{
+    "parent_data": {
+        "db_type": "oracle"
+        , "where_district_type": "SUBSTR(JBXX0.DISTRICT, 0, {}) = {}"
+        },
+    "bg_30": {
+        "db_type": "oracle"
+        , "where_district_type": "SUBSTR(JBXX0.DISTRICT, 0, {}) = {}"
+        }
+}
