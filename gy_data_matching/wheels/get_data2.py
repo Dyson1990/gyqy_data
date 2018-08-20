@@ -50,7 +50,7 @@ class get_data2(object):
         if 'where_district_type' in func_args:
             func_args['where_district_str'] = func_args['where_district_type'].format(len(lookup_code), lookup_code)
         
-        # 读取相关sql参数
+        # 读取相关sql连接参数
         with codecs.open("%s\\args\\sql_args.json" %os.getcwd(), 'r', 'utf-8') as f0:
             sql_args_dict = json.load(f0) # 读取连接不同数据库的参数
         sql_args = sql_args_dict[func_args['db_type']]
@@ -156,11 +156,11 @@ class get_data2(object):
         
         if os.path.exists(file_path):
             # 确定文件类型
-            df_dict = pd.read_excel(file_path, sheet_name=None)
+            df_dict = pd.read_excel(file_path, sheet_name=None, dtype=np.str)
             
             df_sum = pd.concat(df_dict.values(), join='outer', ignore_index=True, sort=False)
                 
-            data[table_name] = df_sum
+            data[table_name] = df_sum.fillna('')
             print('总数据：%s行, 读取耗时：%s' % (df_sum.shape[0], time.time() - start_time))
             return data
         else:

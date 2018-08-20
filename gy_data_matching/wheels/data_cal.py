@@ -79,6 +79,8 @@ class data_cal(object):
         df = data[args[2]]
         
         for i in df.index:
+            
+            # 计算'match'列
             if str(df.loc[i, '类型']) == '2':
                 m = re.search(df.loc[i, re_col], df.loc[i, text_col])
                 if m:
@@ -90,7 +92,7 @@ class data_cal(object):
             else:
                 df.loc[i, 'match'] = ''
                 
-                
+            # 三种函数都使用一遍，用来辅助核对结果
             if str(df.loc[i, '类型']) in ('2', '3'):
                 m = re.search(df.loc[i, re_col], df.loc[i, text_col])
                 if m:
@@ -113,18 +115,38 @@ class data_cal(object):
         if 'result' not in bg_data.columns:
             bg_data['result'] = ''
         
+        # 对每个市的正则表达式进行读取，再对这个市的相关变更数据进行清洗
         for re_i in re_table.index: 
-            if str(df.loc[i, '类型']) in ('2', '3'):
+            if str(re_table.loc[re_i, '类型']) in ('2', '3'):
+                # 编译正则表达式
+                re_str = re_table[re_i, '正则表达式']
+                comp = re.compile(re_str)
+                for bg_i in bg_data.index:
+                    # 分情况处理数据
+                    if str(re_table.loc[re_i, '类型']) == '2':
+                        # 变更前的数据
+                        m = comp.search(bg_data.loc[bg_i, 'altbe'])
+                        bg_data.loc[bg_i, 'm_altbe'] = str(m.groups()) if m else None
+                        
+                        # 变更后的数据
+                        m = comp.search(bg_data.loc[bg_i, 'altaf'])
+                        bg_data.loc[bg_i, 'm_altaf'] = str(m.groups()) if m else None
+                    else:
+                        bg_data.loc[bg_i, 'm_altbe'] = str(comp.findall(bg_data.loc[bg_i, 'altbe']))
+                        bg_data.loc[bg_i, 'm_altaf'] = str(comp.findall(bg_data.loc[bg_i, 'altaf']))
+        
+        data['re_table'] = re_table
+        data['bg_data'] =  bg_data
+        
+        return data
+                       
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+                

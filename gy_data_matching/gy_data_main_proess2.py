@@ -49,7 +49,6 @@ class main_proess(threading.Thread):
             self._thread0(lookup_args)
             self.args_queue.task_done()
 
-
     def _thread0(self, lookup_args):
 
         start_time = time.time()
@@ -87,12 +86,16 @@ class main_proess(threading.Thread):
               [data_cal, 'check_re_str', 're_table', {}],
               [data_output, 'csv_output', 're_table', {'path': 'D:/bg_data_30_test/', 'file_name': 'test_re'}],
               
-              # 检查还未记录的市码
-              [get_data2, 'bg_prov_code', 'bg_prov_code', lookup_args],
-              [data_output, 'csv_output', 'bg_prov_code', {'path': 'D:/bg_data_30_test/', 'file_name': 'prov_code_list'}],
-              
-              [get_data2, 'bg_data', 'bg_data', lookup_args],
-              
+# =============================================================================
+#               # 检查还未记录的市码
+#               [get_data2, 'bg_prov_code', 'bg_prov_code', lookup_args],
+#               [data_output, 'csv_output', 'bg_prov_code', {'path': 'D:/bg_data_30_test/', 'file_name': 'prov_code_list'}],
+#               
+#               # 使用正则表达式检测一个市的所有BG数据
+#               [get_data2, 'bg_data', 'bg_data', lookup_args],
+#               [data_cal, 'bg_data_re_clean', 'bg_data', {}],
+#               [data_output, 'csv_output', 'bg_data', {'path': 'D:/bg_data_30_test/', 'file_name': 'bg_data_%s' %lookup_args['district_code']}],
+# =============================================================================
               ]
 
         try:
@@ -153,11 +156,11 @@ class main_proess(threading.Thread):
             with self.lock:
                 with codecs.open('error.log', 'a', 'utf-8') as f:
                     f.write("\n%s\n%s年%s省第%s步%s\n%s\n" %(datetime.datetime.now(), 
-                                                       lookup_args['year'], 
-                                                       lookup_args['district_code'], 
-                                                       data['i'], 
-                                                       method,
-                                                       traceback.format_exc()))
+                                                           lookup_args['year'], 
+                                                           lookup_args['district_code'], 
+                                                           data['i'], 
+                                                           method,
+                                                           traceback.format_exc()))
             time.sleep(4)
 
         
