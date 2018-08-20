@@ -90,12 +90,12 @@ class main_proess(threading.Thread):
 #               # 检查还未记录的市码
 #               [get_data2, 'bg_prov_code', 'bg_prov_code', lookup_args],
 #               [data_output, 'csv_output', 'bg_prov_code', {'path': 'D:/bg_data_30_test/', 'file_name': 'prov_code_list'}],
-#               
-#               # 使用正则表达式检测一个市的所有BG数据
-#               [get_data2, 'bg_data', 'bg_data', lookup_args],
-#               [data_cal, 'bg_data_re_clean', 'bg_data', {}],
-#               [data_output, 'csv_output', 'bg_data', {'path': 'D:/bg_data_30_test/', 'file_name': 'bg_data_%s' %lookup_args['district_code']}],
 # =============================================================================
+              
+              # 使用正则表达式检测一个市的所有BG数据
+              [get_data2, 'bg_30_origin', 'bg_30_origin', lookup_args],
+              [data_cal, 'bg_data_re_clean', 'bg_30_origin', {}],
+              [data_output, 'csv_output', 'bg_30_origin', {'path': 'D:/bg_data_30_test/', 'file_name': 'bg_data_%s' %lookup_args['district_code']}],
               ]
 
         try:
@@ -107,7 +107,7 @@ class main_proess(threading.Thread):
                                                        lookup_args['district_code'],
                                                        str(data['i']),
                                                        method))
-    
+                # 执行method_list中每一个步骤
                 func = getattr(method[0], method[1])
                 data = func(data, args=method)
                 
@@ -128,8 +128,7 @@ class main_proess(threading.Thread):
                                                                             , str(data['i'])
                                                                             , method[1]
                                                                             , method[2]
-                                                                            , data[method[2]]
-                                                                            .shape[0])
+                                                                            , data[method[2]].shape[0])
                                                        , encoding = 'utf_8_sig')
                 
                 data['i'] = data['i'] + 1
@@ -174,7 +173,7 @@ if __name__ == '__main__':
     prov_list = set([str(s)[0:2] for s in district_name['code'].tolist()])
     lock = threading.Lock()
     args_queue = queue.Queue()
-    datamark = 'test'
+    datamark = 'bg_30'
     count_list = []
     
     for y in range(1998, 1999):

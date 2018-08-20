@@ -110,7 +110,7 @@ class data_cal(object):
         """
         
         re_table = data['re_table']
-        bg_data = data['bg_data']
+        bg_data = data['bg_30_origin']
         
         if 'result' not in bg_data.columns:
             bg_data['result'] = ''
@@ -136,7 +136,7 @@ class data_cal(object):
                         bg_data.loc[bg_i, 'm_altaf'] = str(comp.findall(bg_data.loc[bg_i, 'altaf']))
         
         data['re_table'] = re_table
-        data['bg_data'] =  bg_data
+        data['bg_30_origin'] =  bg_data
         
         return data
                        
