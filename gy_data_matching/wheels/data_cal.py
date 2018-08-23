@@ -11,6 +11,10 @@ import sys
 import pandas as pd
 import numpy as np
 import re
+import json
+import itertools
+import time
+
 
 class data_cal(object):
 
@@ -70,6 +74,37 @@ class data_cal(object):
         
         return data
     
+    def value_filter(self, data, args=None):
+        # [data_cal, 'bg_data_re_clean', 'bg_30_origin', {'filter_col':, 'filter_value':}],
+        arg = args[-1]
+        df = data[args[2]]
+        
+        filter_col = arg['filter_col']
+        filter_value = arg['filter_value']
+        
+        df = df[df[filter_col]==filter_value]
+        
+        data[args[2]] = df
+        
+        return data
+    
+    def re_table_value_filter(self, data, args=None):
+        # 专用
+        df = data[args[2]]
+        # df = df.dropna(subset=['市码', '类型'])
+        df['市码'] = df['市码'].astype(np.int).astype(np.str)
+        df['类型'] = df['类型'].astype(np.int).astype(np.str)
+
+        prov_code = str(data['info']['province_code'])
+        
+        df = df[(df['市码']==prov_code)
+                & ((df['类型']=='2') | (df['类型']=='3'))]
+        
+        data[args[2]] = df
+        
+        return data
+
+    
     def check_re_str(self, data, args=None):
         # 在清洗bg data时， 确认正则表达式的正确性
         # [data_cal, 'check_re_str', 're_table', {}],
@@ -79,26 +114,31 @@ class data_cal(object):
         df = data[args[2]]
         
         for i in df.index:
+            # 若正则表达式本身就有错无法编译，则跳过运行下一条
+            try:
+                comp = re.compile(df.loc[i, re_col])
+            except:
+                continue
             
             # 计算'match'列
             if str(df.loc[i, '类型']) == '2':
-                m = re.search(df.loc[i, re_col], df.loc[i, text_col])
+                m = comp.search(df.loc[i, text_col])
                 if m:
                     df.loc[i, 'match'] = str(m.groups())
                 else:
                     df.loc[i, 'match'] = None
             elif str(df.loc[i, '类型']) == '3':
-                df.loc[i, 'match'] = str(re.findall(df.loc[i, re_col], df.loc[i, text_col]))
+                df.loc[i, 'match'] = str(comp.findall(df.loc[i, text_col]))
             else:
                 df.loc[i, 'match'] = ''
                 
             # 三种函数都使用一遍，用来辅助核对结果
             if str(df.loc[i, '类型']) in ('2', '3'):
-                m = re.search(df.loc[i, re_col], df.loc[i, text_col])
+                m = comp.search(df.loc[i, text_col])
                 if m:
                     df.loc[i, 'group()'] = str(m.group())
                     df.loc[i, 'groups()'] = str(m.groups())
-                df.loc[i, 'findall()'] = str(re.findall(df.loc[i, re_col], df.loc[i, text_col]))
+                df.loc[i, 'findall()'] = str(comp.findall(df.loc[i, text_col]))
         
         data[args[2]] = df
         
@@ -111,34 +151,124 @@ class data_cal(object):
         
         re_table = data['re_table']
         bg_data = data['bg_30_origin']
+        bg_data = bg_data.fillna('')
         
+        # 初始化表格
         if 'result' not in bg_data.columns:
-            bg_data['result'] = ''
+            bg_data['result'] = json.dumps({}, ensure_ascii=False)
+# =============================================================================
+#         if 'm_altbe2' not in bg_data:
+#             bg_data['m_altbe2'] = ''
+#         if 'm_altaf2' not in bg_data:
+#             bg_data['m_altaf2'] = ''
+#         if 'm_altbe3' not in bg_data:
+#             bg_data['m_altbe3'] = ''
+#         if 'm_altaf3' not in bg_data:
+#             bg_data['m_altaf3'] = ''
+# =============================================================================
         
         # 对每个市的正则表达式进行读取，再对这个市的相关变更数据进行清洗
-        for re_i in re_table.index: 
-            if str(re_table.loc[re_i, '类型']) in ('2', '3'):
-                # 编译正则表达式
-                re_str = re_table[re_i, '正则表达式']
+        for re_i, bg_i in itertools.product(re_table.index,bg_data.index): 
+            # 直接略过不需要使用正则表达式的行
+            re_type = str(re_table.loc[re_i, '类型'])
+            if re_type not in ('2', '3'):
+                continue
+            
+            # 编译正则表达式
+            re_str = re_table.loc[re_i, '正则表达式']
+            try:
                 comp = re.compile(re_str)
-                for bg_i in bg_data.index:
-                    # 分情况处理数据
-                    if str(re_table.loc[re_i, '类型']) == '2':
-                        # 变更前的数据
-                        m = comp.search(bg_data.loc[bg_i, 'altbe'])
-                        bg_data.loc[bg_i, 'm_altbe'] = str(m.groups()) if m else None
-                        
-                        # 变更后的数据
-                        m = comp.search(bg_data.loc[bg_i, 'altaf'])
-                        bg_data.loc[bg_i, 'm_altaf'] = str(m.groups()) if m else None
-                    else:
-                        bg_data.loc[bg_i, 'm_altbe'] = str(comp.findall(bg_data.loc[bg_i, 'altbe']))
-                        bg_data.loc[bg_i, 'm_altaf'] = str(comp.findall(bg_data.loc[bg_i, 'altaf']))
+            except:
+                continue
+            
+            altbe = bg_data.loc[bg_i, 'altbe']
+            altaf = bg_data.loc[bg_i, 'altaf']
+            info = re_table.loc[re_i, '字段说明']
+            
+            # 分情况处理数据
+            if re_type == '3':
+                m_altbe = bg_data.loc[bg_i, 'm_altbe3']
+                # 变更前的数据
+                res_l = comp.findall(altbe)
+                if not m_altbe:
+                    m_altbe = json.dumps([{} for s in res_l])
+                old_l = json.loads(m_altbe)
+                print(m_altbe, old_l, res_l)
+                for i in range(len(old_l)):
+                    old_l[i][info] = res_l[i]
+                bg_data.loc[bg_i, 'm_altbe3'] = json.dumps(old_l, ensure_ascii=False)
+                
+                # 变更后的数据
+                m_altaf = bg_data.loc[bg_i, 'm_altaf3']
+                res_l = comp.findall(altaf)
+                if not m_altaf:
+                    m_altaf = json.dumps([{} for s in res_l])
+                old_l = json.loads(m_altaf)
+                for i in range(len(old_l)):
+                    old_l[i][info] = res_l[i]
+                bg_data.loc[bg_i, 'm_altaf3'] = json.dumps(old_l, ensure_ascii=False)
+                
+            else:
+                # 类型2理论上只会匹配一次
+                info = '{%s}' %info.replace(';', ',')
+                title = eval(info)
+                
+                # 变更前的数据
+                m_altbe = bg_data.loc[bg_i, 'm_altbe2']
+                m = comp.search(altbe)
+                res = {title[k]: m.groups()[k] for k in title} if m else ''
+                bg_data.loc[bg_i, 'm_altbe2'] = json.dumps([res,], ensure_ascii=False)
+                
+                # 变更后的数据
+                m_altaf = bg_data.loc[bg_i, 'm_altaf3']
+                m = comp.search(altaf)
+                res = {title[k]: m.groups()[k] for k in title} if m else ''
+                bg_data.loc[bg_i, 'm_altbe3'] = json.dumps([res,], ensure_ascii=False)
         
         data['re_table'] = re_table
         data['bg_30_origin'] =  bg_data
         
         return data
+    
+def is_in_polygon(lon, lat, point_list):  
+    ''''' 
+    :param lon: double 经度 
+    :param lat: double 纬度 
+    :param point_list: list [(lon, lat)...] 多边形点的顺序需根据顺时针或逆时针，不能乱 
+    '''  
+    i_sum = 0  
+    i_count = len(point_list)  
+    
+    # 若多边形的列表中的点不够构成一个多边形
+    if i_count < 3 :  
+        return False  
+      
+    for i in range(i_count):  
+          
+        pLon1 = point_list[i][0]  
+        pLat1 = point_list[i][1]  
+          
+        if(i == i_count - 1):  
+              
+            pLon2 = point_list[0][0]  
+            pLat2 = point_list[0][1]  
+        else:  
+            pLon2 = point_list[i + 1][0]  
+            pLat2 = point_list[i + 1][1]  
+          
+        if ((lat >= pLat1) and (lat < pLat2)) or ((lat>=pLat2) and (lat < pLat1)):  
+              
+            if (abs(pLat1 - pLat2) > 0):
+                  
+                pLon = pLon1 - ((pLon1 - pLon2) * (pLat1 - lat)) / (pLat1 - pLat2);  
+                  
+                if(pLon < lon):  
+                    i_sum += 1  
+  
+    if(i_sum % 2 != 0):  
+        return True  
+    else:  
+        return False  
                        
                         
                         

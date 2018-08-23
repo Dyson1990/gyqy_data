@@ -12,6 +12,7 @@ import traceback
 
 import sqlalchemy
 import sqlalchemy.orm
+import sqlalchemy.ext.automap
 
 import pandas as pd
 import numpy as np
@@ -28,6 +29,7 @@ eng_str = {
         'oracle':"{db_dialect}+{db_driver}://{user}:{password}@{host}:{port}/{sid}?charset={charset}"
         , 'mysql': "{db_dialect}+{db_driver}://{user}:{password}@{host}:{port}/?charset={charset}"
         }
+# 选择数据库
 dbname_str = {
         'oracle':"ALTER SESSION SET CURRENT_SCHEMA = \"{}\""
         , 'mysql':"USE `{}`"
@@ -51,17 +53,16 @@ class sql_manager(object):
         """
         data = []
         
-        global eng_str
         sql_args = self.standardize_args(sql_args)
 
         try:
             # 使用哪种数据库，填入Oralce，MySQL等等
-            db_dialect = sql_args['db_dialect'] 
-            engine = sqlalchemy.create_engine(eng_str[db_dialect].format(**sql_args),echo=True)
+            engine = self.sql_engine(sql_args)
             
             with closing(engine.connect()) as conn:
                 # 选择数据库
                 global dbname_str
+                db_dialect = sql_args['db_dialect'] 
                 conn.execute(dbname_str[db_dialect].format(sql_args['dbname']))
                 
                 # 多条SQL语句的话，循环执行
@@ -95,7 +96,6 @@ class sql_manager(object):
         # Column('id',Integer(),primary_key=True, autoincrement=True),
         
         # 检验所需参数是否齐全
-        global eng_str
         sql_args = self.standardize_args(sql_args)
         
         table_name = df_args['table_name']
@@ -108,9 +108,9 @@ class sql_manager(object):
 
         try:
             # 使用哪种数据库，填入Oralce，MySQL等等
-            db_dialect = sql_args['db_dialect']
-            engine = sqlalchemy.create_engine(eng_str[db_dialect].format(**sql_args), echo=True)
+            engine = self.sql_engine(sql_args)
             global dbname_str
+            db_dialect = sql_args['db_dialect']
             engine.execute(dbname_str[db_dialect].format(sql_args['dbname']))
 
             # 初始化元数据表格
@@ -139,26 +139,45 @@ class sql_manager(object):
 
     def insert_df_data(self, df, table_name, sql_args):
         # 从dataframe中将数据插入数据库
-        
-        global eng_str
+
         sql_args = self.standardize_args(sql_args)
         
+        # 使用哪种数据库，填入Oralce，MySQL等等
+        engine = self.sql_engine(sql_args)
+        global dbname_str
+        db_dialect = sql_args['db_dialect']
+        engine.execute(dbname_str[db_dialect].format(sql_args['dbname']))
+        
+        schema = sqlalchemy.schema(engine)
+        
+        metadata = sqlalchemy.MetaData(bind=engine, reflect=True)
+        #metadata.reflect(engine, only=['HR', ])
+        print(metadata.tables)
+        
+        base = sqlalchemy.ext.automap.automap_base(metadata=metadata)
+        print(base.metadata.tables)
         try:
-            # 使用哪种数据库，填入Oralce，MySQL等等
-            db_dialect = sql_args['db_dialect']
-            engine = sqlalchemy.create_engine(eng_str[db_dialect].format(**sql_args), echo=True)
-            global dbname_str
-            engine.execute(dbname_str[db_dialect].format(sql_args['dbname']))
-            
             # 初始化会话
             mk_session = sqlalchemy.orm.sessionmaker(bind=engine)
             
             session = mk_session()
             
-            print(dir(session))
+# =============================================================================
+#             # 查询操作
+#             result = session.query(Base.classes.users).all()
+# =============================================================================
+# =============================================================================
+#             insert_args = {'COMMIT':'WTF'}
+#             item = base.classes.jobs(**insert_args)
+#             session.add(item)
+# =============================================================================
             
+            session.commit()
         except:
-            print("数据库交互出错：%s" % traceback.format_exc())
+            session.rollback()
+            raise Exception("【insert_df_data】:fail\n{}".format(traceback.format_exc()))
+        finally:
+            session.close()
         
         
         
@@ -247,6 +266,16 @@ class sql_manager(object):
             
         return sql_args
     
+    def sql_engine(self, sql_args):
+        global eng_str
+        db_dialect = sql_args['db_dialect']
+        global dbname_str
+        engine = sqlalchemy.create_engine(eng_str[db_dialect].format(**sql_args)
+                                          , echo=True
+                                          )
+        engine.connect()
+        print(engine.table_names())
+        return engine
     
 
 
@@ -266,7 +295,7 @@ if __name__ == '__main__':
         , 'dbname': 'HR'
         , 'data_type': 'DataFrame'
     }
-   #print(sql_manager.connect('SELECT JOB_ID, MIN_SALARY, COMMIT FROM JOBS', sql_args))
+    # print(sql_manager.connect('SELECT JOB_ID, MIN_SALARY, COMMIT FROM JOBS', sql_args))
 
 
    
@@ -285,5 +314,8 @@ if __name__ == '__main__':
 #     }
 # =============================================================================
     # print(sql_manager.connect('SELECT * FROM `actor` LIMIT 20', sql_args))
+    
+    
     df = pd.DataFrame({})
-    sql_manager.insert_df_data(df, 'WTF', sql_args)
+    sql_manager.insert_df_data(df, 'JOBS', sql_args)
+

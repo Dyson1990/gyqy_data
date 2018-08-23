@@ -15,6 +15,7 @@ import pandas as pd
 import time
 import codecs
 import json
+import re
 
 import wheels.wheels.sql_manager
 sql_manager = wheels.wheels.sql_manager.sql_manager()
@@ -40,20 +41,24 @@ class get_data2(object):
         lookup_code = lookup_args['district_code']
         func_name = args[2]
         
-        # 读取对应函数中所需的参数
-        with codecs.open("%s\\args\\func_args.json" %os.getcwd(), 'r', 'utf-8') as f0:
-            func_args = json.load(f0)
-        
-        func_args = func_args[func_name]
-        func_args['year'] = lookup_args['year']
-        
-        if 'where_district_type' in func_args:
-            func_args['where_district_str'] = func_args['where_district_type'].format(len(lookup_code), lookup_code)
+        # 读取sql代码
+        with codecs.open("%s\\args\\sql_str_%s.sql" %(os.getcwd(), func_name), 'r', 'utf-8') as f0:
+            sql = f0.read()# .format(**func_args)
+            
+        # 读取相关的参数
+        db_type = re.search(r'-*- db_type:(.+?) -*-', sql).group(1)
+        print('db_type:', db_type)
         
         # 读取相关sql连接参数
         with codecs.open("%s\\args\\sql_args.json" %os.getcwd(), 'r', 'utf-8') as f0:
             sql_args_dict = json.load(f0) # 读取连接不同数据库的参数
-        sql_args = sql_args_dict[func_args['db_type']]
+        sql_args = sql_args_dict[db_type]
+        
+        #################规定sql语句中的一些参数###############################
+        func_args = {}
+        if 'district_code' in sql:
+            func_args.update({'district_code': lookup_code
+                              , 'district_code_len': len(lookup_code)})
 
         # 补充一些参数
         if os.path.exists("%s\\args\\table_args_%s.json" %(os.getcwd(), func_name)):
@@ -61,11 +66,12 @@ class get_data2(object):
                 table_args = json.load(f0)
             func_args.update(table_args[func_args['year']])
         
-        # 输出完整的sql代码
-        with codecs.open("%s\\args\\sql_str_%s.sql" %(os.getcwd(), func_name), 'r', 'utf-8') as f0:
-            sql = f0.read().format(**func_args)
+        # 将有关的参数填入sql 语句中
+        sql = sql.format(**func_args)
+        #######################################################################
+
+        # 读取数据
         print(sql)
-        
         df = sql_manager.connect(sql, sql_args)
         if df is None:
             df = pd.DataFrame([])

@@ -1,3 +1,4 @@
+-- -*- db_type:oracle -*-
 SELECT
     JBXX0.ENTID
     , JBXX0.ENTNAME

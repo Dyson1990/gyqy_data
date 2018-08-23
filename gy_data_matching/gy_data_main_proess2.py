@@ -35,6 +35,9 @@ data_output = wheels.data_output.data_output()
 import wheels.data_cal
 data_cal = wheels.data_cal.data_cal()
 
+import wheels.data_evaluation
+data_evaluation = wheels.data_evaluation.data_evaluation()
+
 class main_proess(threading.Thread):
     def __init__(self, args_queue, lock, datamark, count_dict):
         threading.Thread.__init__(self)
@@ -55,12 +58,13 @@ class main_proess(threading.Thread):
         
         log_path = 'D:\\process_log_%s' %self.datamark
         data = {
-            'i': 0,
-            'path': os.path.join(log_path, lookup_args['year'], lookup_args['district_code']),
-            'res': pd.DataFrame([]),
-            'info': {'year':lookup_args['year'], 'province_code':lookup_args['district_code']},
-            'count':self.count_dict, # 每个data_match中涉及的结果统计
-            'lock': self.lock,
+            'i': 0
+            , 'path': os.path.join(log_path, lookup_args['year'], lookup_args['district_code'])
+            , 'res': pd.DataFrame([])
+            , 'info': {'year':lookup_args['year'], 'province_code':lookup_args['district_code']}
+            , 'count':self.count_dict # 每个data_match中涉及的结果统计
+            , 'lock': self.lock
+            , 'trigger': True
         }
         
         # 清空原有的对应县码的日志文件
@@ -77,14 +81,19 @@ class main_proess(threading.Thread):
         
         # bg30提取 new
         method_list = [
-              [get_data2, 'xlsx_multi_sheets_data', 're_table', {'file_path':'D:/徐丽俊.xlsx'}],
+              [get_data2, 'xlsx_multi_sheets_data', 're_table', {'file_path':'D:/正则表达式_修改.xlsx'}],
+              [data_cal, 're_table_value_filter', 're_table', {}],
+              [data_evaluation, 'df_empty', 're_table', {}],
               [data_clean, 'punctuation_eng2cn', 're_table', {'col_name':'正则表达式'}],
               [data_clean, 'punctuation_eng2cn', 're_table', {'col_name':'正则表达式-'}],
               [data_clean, 'punctuation_eng2cn', 're_table', {'col_name':'举例'}],
+              [data_clean, 'punctuation_eng2cn', 're_table', {'col_name':'字段说明'}],
               
-              # 根据“举例”来测试正则表达式的准确性
-              [data_cal, 'check_re_str', 're_table', {}],
-              [data_output, 'csv_output', 're_table', {'path': 'D:/bg_data_30_test/', 'file_name': 'test_re'}],
+# =============================================================================
+#               # 根据“举例”来测试正则表达式的准确性
+#               [data_cal, 'check_re_str', 're_table', {}],
+#               [data_output, 'csv_output', 're_table', {'path': 'D:/bg_data_30_test/', 'file_name': 'test_re'}],
+# =============================================================================
               
 # =============================================================================
 #               # 检查还未记录的市码
@@ -93,23 +102,32 @@ class main_proess(threading.Thread):
 # =============================================================================
               
               # 使用正则表达式检测一个市的所有BG数据
-              [get_data2, 'bg_30_origin', 'bg_30_origin', lookup_args],
+              [get_data2, 'sql_data', 'bg_30_origin', lookup_args],
               [data_cal, 'bg_data_re_clean', 'bg_30_origin', {}],
-              [data_output, 'csv_output', 'bg_30_origin', {'path': 'D:/bg_data_30_test/', 'file_name': 'bg_data_%s' %lookup_args['district_code']}],
+              [data_output, 'csv_output', 'bg_30_origin', {'path': 'D:/bg_data_30_test/'
+                                                           , 'file_name': 'bg_data_%s' %lookup_args['district_code']}],
               ]
-
         try:
             thread_info = {}
             for method in method_list:
                 start_time0 = time.time()
-                print("\n%s\n%s年%s省第%s步\n%s\n" %(datetime.datetime.now(), 
-                                                       lookup_args['year'],
-                                                       lookup_args['district_code'],
-                                                       str(data['i']),
-                                                       method))
+                print("\n%s\n%s年%s省第%s步\n%s\n" %(datetime.datetime.now() 
+                                                     , lookup_args['year']
+                                                     , lookup_args['district_code']
+                                                     , str(data['i'])
+                                                     , method))
                 # 执行method_list中每一个步骤
                 func = getattr(method[0], method[1])
                 data = func(data, args=method)
+                
+                # 'trigger'参数为False的时候，说明已经没有必要进行剩下的步骤了
+                if not data['trigger']:
+                    pd.DataFrame([]).to_csv('%s\\%s.-程序中断[总耗时:%s].csv' % (data['path']
+                                                                                , str(data['i'])
+                                                                                , int(time.time() - start_time)))
+                    break
+                
+       #############################以下是日志部分#############################
                 
                 if 'test_data' in data and data['test_data'].empty:
                     break
@@ -148,18 +166,18 @@ class main_proess(threading.Thread):
                                        , encoding = 'utf_8_sig')
             
             # 证明程序运行完了，没有报错
-            pd.DataFrame([]).to_csv('%s%s.程序运行完毕[总耗时:%s].csv' % (data['path']
+            pd.DataFrame([]).to_csv('%s\\%s.程序运行完毕[总耗时:%s].csv' % (data['path']
                                                                           , str(data['i'])
-                                                                          , (time.time() - start_time)))
+                                                                          , int(time.time() - start_time)))
         except:
             with self.lock:
-                with codecs.open('error.log', 'a', 'utf-8') as f:
-                    f.write("\n%s\n%s年%s省第%s步%s\n%s\n" %(datetime.datetime.now(), 
-                                                           lookup_args['year'], 
-                                                           lookup_args['district_code'], 
-                                                           data['i'], 
-                                                           method,
-                                                           traceback.format_exc()))
+                with codecs.open(os.path.join(log_path, 'error.log'), 'a', 'utf-8') as f:
+                    f.write("\n%s\n%s年%s省第%s步%s\n%s\n" %(datetime.datetime.now() 
+                                                             , lookup_args['year']
+                                                             , lookup_args['district_code']
+                                                             , data['i']
+                                                             , method
+                                                             , traceback.format_exc()))
             time.sleep(4)
 
         
@@ -170,7 +188,7 @@ class main_proess(threading.Thread):
 if __name__ == '__main__':
     with codecs.open("%s\\args\\district_code.csv" %os.getcwd(),'r','utf-8') as f0:
         district_name = pd.read_csv(f0, dtype=np.str) # 第一列不作为index
-    prov_list = set([str(s)[0:2] for s in district_name['code'].tolist()])
+    prov_list = set([str(s)[0:4] for s in district_name['code'].tolist()])
     lock = threading.Lock()
     args_queue = queue.Queue()
     datamark = 'bg_30'
@@ -179,7 +197,10 @@ if __name__ == '__main__':
     for y in range(1998, 1999):
         for s in prov_list:
             args_queue.put({'district_code':s, 'year':str(y)})
-    
+# =============================================================================
+#     args_queue.put({'district_code':'4303', 'year':'11111'})
+#     
+# =============================================================================
 
     # 10个线程
     for i in range(1):

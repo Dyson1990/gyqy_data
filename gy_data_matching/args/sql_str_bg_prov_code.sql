@@ -1,3 +1,4 @@
+-- -*- db_type:oracle -*-
 -- 获取F_QY_BG中的企业对应县码的全表
 SELECT
     DISTINCT(F_QY_JBXX.DISTRICT)

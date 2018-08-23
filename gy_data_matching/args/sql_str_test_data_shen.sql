@@ -1,3 +1,4 @@
+-- -*- db_type:mysql -*-
 SELECT
     `{ent_name}` AS `lookup_name`
     , `{ent_name}` AS `entname` 
