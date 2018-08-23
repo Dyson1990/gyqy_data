@@ -154,9 +154,13 @@ class data_cal(object):
         bg_data = bg_data.fillna('')
         
         # 初始化表格
-        if 'result' not in bg_data.columns:
-            bg_data['result'] = json.dumps({}, ensure_ascii=False)
+        if 'm_altbe2' not in bg_data:
+            bg_data['m_altbe'] = json.dumps({}, ensure_ascii=False)
+        if 'm_altaf2' not in bg_data:
+            bg_data['m_altaf'] = json.dumps({}, ensure_ascii=False)
 # =============================================================================
+#         if 'result' not in bg_data.columns:
+#             bg_data['result'] = json.dumps({}, ensure_ascii=False)
 #         if 'm_altbe2' not in bg_data:
 #             bg_data['m_altbe2'] = ''
 #         if 'm_altaf2' not in bg_data:
@@ -187,43 +191,44 @@ class data_cal(object):
             
             # 分情况处理数据
             if re_type == '3':
-                m_altbe = bg_data.loc[bg_i, 'm_altbe3']
+
                 # 变更前的数据
+                m_altbe = bg_data.loc[bg_i, 'm_altbe']
+                m_altbe = json.loads(m_altbe)
                 res_l = comp.findall(altbe)
-                if not m_altbe:
-                    m_altbe = json.dumps([{} for s in res_l])
-                old_l = json.loads(m_altbe)
-                print(m_altbe, old_l, res_l)
-                for i in range(len(old_l)):
-                    old_l[i][info] = res_l[i]
-                bg_data.loc[bg_i, 'm_altbe3'] = json.dumps(old_l, ensure_ascii=False)
+                if res_l:
+                    m_altbe[info] = res_l
                 
                 # 变更后的数据
-                m_altaf = bg_data.loc[bg_i, 'm_altaf3']
+                m_altaf = bg_data.loc[bg_i, 'm_altaf']
+                m_altaf = json.loads(m_altaf)
                 res_l = comp.findall(altaf)
-                if not m_altaf:
-                    m_altaf = json.dumps([{} for s in res_l])
-                old_l = json.loads(m_altaf)
-                for i in range(len(old_l)):
-                    old_l[i][info] = res_l[i]
-                bg_data.loc[bg_i, 'm_altaf3'] = json.dumps(old_l, ensure_ascii=False)
-                
+                if res_l:
+                    m_altaf[info] = res_l
+               
             else:
-                # 类型2理论上只会匹配一次
                 info = '{%s}' %info.replace(';', ',')
                 title = eval(info)
                 
                 # 变更前的数据
-                m_altbe = bg_data.loc[bg_i, 'm_altbe2']
+                m_altbe = bg_data.loc[bg_i, 'm_altbe']
+                m_altbe = json.loads(m_altbe)
                 m = comp.search(altbe)
-                res = {title[k]: m.groups()[k] for k in title} if m else ''
-                bg_data.loc[bg_i, 'm_altbe2'] = json.dumps([res,], ensure_ascii=False)
+                if m:
+                    res = {title[k]: m.groups()[k] for k in title}
+                    m_altbe['groups_data'] = res
                 
                 # 变更后的数据
-                m_altaf = bg_data.loc[bg_i, 'm_altaf3']
+                m_altaf = bg_data.loc[bg_i, 'm_altaf']
+                m_altaf = json.loads(m_altaf)
                 m = comp.search(altaf)
-                res = {title[k]: m.groups()[k] for k in title} if m else ''
-                bg_data.loc[bg_i, 'm_altbe3'] = json.dumps([res,], ensure_ascii=False)
+                if m:
+                    res = {title[k]: m.groups()[k] for k in title}
+                    m_altbe['groups_data'] = res
+            
+            # 将数据填入dataframe
+            bg_data.loc[bg_i, 'm_altbe'] = json.dumps(m_altbe, ensure_ascii=False)
+            bg_data.loc[bg_i, 'm_altaf'] = json.dumps(m_altaf, ensure_ascii=False)
         
         data['re_table'] = re_table
         data['bg_30_origin'] =  bg_data
