@@ -80,55 +80,16 @@ class main_proess(threading.Thread):
                 data[key].columns = [s.lower() for s in data[key].columns]
 
         # method_list为一个列表，其中[module, method, 0]代表针对test_data的方法，其中[module, method, 1]代表针对parent_data的方法
-        #数据横向匹配    
+
+            
+        #北大工业企业数据纵向匹配    
         method_list = [
-            # 读取原始数据
-            [get_data, 'test_data_%s' %self.data_resource, 'test_data', lookup_args],
-            # 读取清洗好的数据
-            [get_data, 'csv_data', 'parent_data', {'file_path':'D:/namelist2/%s.csv' %lookup_args['list'][0], 'table_name':'parent_data'}],
-            # 数据初步清洗
-            [data_clean, 'entname_punctuation_clean', 'test_data', {'col_name': 'lookup_name'}],
-            [data_clean, 'entname_punctuation_clean', 'test_data', {'col_name': 'r_name'}],
-            
-            # 对应 企业全名 + 省码
-            # ？？？？？？此处的“正确”匹配的数据并没有检验？？？？？？？
-            # [data_cal, 'name_district_comb', None, {}],
-            [data_match, 'data_merge', None, {'lookup_name_x': 'lookup_name', 'lookup_name_y': 'lookup_name', 'bool_col': 'entid'}],
-            # [data_cal, 'col_drop', 'test_data', {'col_name': 'lookup_name0'}],
-            # [data_cal, 'col_drop', 'parent_data', {'col_name': 'lookup_name0'}],
-            
-# =============================================================================
-#             # 读取清洗好的法人信息
-#             [get_data, 'csv_data', 'r_name_list', {'file_path':'D:/combined_r_name_list/%s.csv' %lookup_args['list'][0], 'table_name':'r_name_list'}],
-#             
-#             [data_match, 'data_check', None, {'lookup_name_x': 'lookup_name0', 'lookup_name_y': 'lookup_name0', 'bool_col': 'entid'}],
-# =============================================================================
-            
-            # 去除lookup_name中的括号
-            [data_clean, 'bracket_clean', 'test_data', ''],
-            [data_clean, 'bracket_clean', 'parent_data', ''],
-            
-            # 分离企业属性
-            [data_clean, 'company_type_split', 'test_data', ''],
-            [data_clean, 'company_type_split', 'parent_data', ''],
-            
-            # 分离企业的省份
-            [data_clean, 'place_split', 'test_data', {'str_col':'province'}],
-            [data_clean, 'place_split', 'parent_data', {'str_col':'province'}],
-            
-# =============================================================================
-#             # 分离企业的市
-#             [data_clean, 'place_split', 'test_data', {'str_col':'city'}],
-#             [data_clean, 'place_split', 'parent_data', {'str_col':'city'}],
-#             
-#             # 分离企业的县
-#             [data_clean, 'place_split', 'test_data', {'str_col':'county'}],
-#             [data_clean, 'place_split', 'parent_data', {'str_col':'county'}],
-# =============================================================================
-            
-            [data_match, 'data_merge', None, {'lookup_name_x': 'lookup_name', 'lookup_name_y': 'lookup_name', 'bool_col': 'entid'}],
+            [get_data, 'test_data_beida0', 'test_data', data['info']],
+            [data_clean, 'entname_punctuation_clean', 'test_data', {'col_name': 'entname'}],
+            [data_match, 'data_check0', None, {}],
         ]
-            
+        
+        
         try:
             for method in method_list:
                 # print(type(method))
@@ -214,6 +175,58 @@ if __name__ == '__main__':
     
     print("程序运行完毕！！！！")
     time.sleep(36000)
+    
+    
+# =============================================================================
+#         #数据横向匹配    
+#         method_list = [
+#             # 读取原始数据
+#             [get_data, 'test_data_%s' %self.data_resource, 'test_data', lookup_args],
+#             # 读取清洗好的数据
+#             [get_data, 'csv_data', 'parent_data', {'file_path':'D:/namelist2/%s.csv' %lookup_args['list'][0], 'table_name':'parent_data'}],
+#             # 数据初步清洗
+#             [data_clean, 'entname_punctuation_clean', 'test_data', {'col_name': 'lookup_name'}],
+#             [data_clean, 'entname_punctuation_clean', 'test_data', {'col_name': 'r_name'}],
+#             
+#             # 对应 企业全名 + 省码
+#             # ？？？？？？此处的“正确”匹配的数据并没有检验？？？？？？？
+#             # [data_cal, 'name_district_comb', None, {}],
+#             [data_match, 'data_merge', None, {'lookup_name_x': 'lookup_name', 'lookup_name_y': 'lookup_name', 'bool_col': 'entid'}],
+#             # [data_cal, 'col_drop', 'test_data', {'col_name': 'lookup_name0'}],
+#             # [data_cal, 'col_drop', 'parent_data', {'col_name': 'lookup_name0'}],
+#             
+# # =============================================================================
+# #             # 读取清洗好的法人信息
+# #             [get_data, 'csv_data', 'r_name_list', {'file_path':'D:/combined_r_name_list/%s.csv' %lookup_args['list'][0], 'table_name':'r_name_list'}],
+# #             
+# #             [data_match, 'data_check', None, {'lookup_name_x': 'lookup_name0', 'lookup_name_y': 'lookup_name0', 'bool_col': 'entid'}],
+# # =============================================================================
+#             
+#             # 去除lookup_name中的括号
+#             [data_clean, 'bracket_clean', 'test_data', ''],
+#             [data_clean, 'bracket_clean', 'parent_data', ''],
+#             
+#             # 分离企业属性
+#             [data_clean, 'company_type_split', 'test_data', ''],
+#             [data_clean, 'company_type_split', 'parent_data', ''],
+#             
+#             # 分离企业的省份
+#             [data_clean, 'place_split', 'test_data', {'str_col':'province'}],
+#             [data_clean, 'place_split', 'parent_data', {'str_col':'province'}],
+#             
+# # =============================================================================
+# #             # 分离企业的市
+# #             [data_clean, 'place_split', 'test_data', {'str_col':'city'}],
+# #             [data_clean, 'place_split', 'parent_data', {'str_col':'city'}],
+# #             
+# #             # 分离企业的县
+# #             [data_clean, 'place_split', 'test_data', {'str_col':'county'}],
+# #             [data_clean, 'place_split', 'parent_data', {'str_col':'county'}],
+# # =============================================================================
+#             
+#             [data_match, 'data_merge', None, {'lookup_name_x': 'lookup_name', 'lookup_name_y': 'lookup_name', 'bool_col': 'entid'}],
+#         ]
+# =============================================================================
     
 # =============================================================================
 #         # 海关数据整理

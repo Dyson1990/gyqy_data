@@ -16,6 +16,7 @@ import threading
 import queue
 import time
 import traceback
+import json
 
 class dom_clean(threading.Thread):
 
@@ -34,14 +35,16 @@ class dom_clean(threading.Thread):
         # print(thread_args)
         df = thread_args['data']
         for i in df.index:
-            print('RUNNING {}API  => {}'.format(thread_args['id'], i))
+            print('RUNNING {}API  => {}'.format(thread_args['thread_id'], i))
             try:
-                df.loc[i, 'res'] = baidu_api.get_data(df.loc[i, 'dom_road']
-                                                      , df.loc[i, 're地市名']
-                                                      , ak = thread_args['AK']
-                                                      , sk = thread_args['SK'])
-                df.to_csv('C:\\Users\\gooddata\\Desktop\\res\\{}.csv'.format(thread_args['id']), encoding='utf_8_sig')
-                time.sleep(1.5)
+                res0 = baidu_api.get_data(df.loc[i, 'dom_road']
+                                          , df.loc[i, 're地市名']
+                                          , ak = thread_args['AK']
+                                          , sk = thread_args['SK'])
+                res0 = json.loads(res0)
+                df.loc[i, 'res'] = json.dumps(res0, ensure_ascii=False)
+                df.to_csv('C:\\Users\\gooddata\\Desktop\\res20180824\\{}.csv'.format(thread_args['thread_id']), encoding='utf_8_sig')
+                time.sleep(1)
             except:
                 df.loc[i, 'res'] = '百度API错误'
                 print(traceback.format_exc())
@@ -98,58 +101,57 @@ if __name__ == '__main__':
     merged_table.to_csv('C:\\Users\\gooddata\\Desktop\\res\\merged_table.csv', encoding='utf_8_sig')
     
     key_list = [
+            {
+                'AK':'ZGz27O8UEXkC3SEIdHAn7u6aFL1CH0u0'
+                , 'SK':'70CTq3TOe3x6XGuhW7RC7z9YVG4r5zuZ'
+                , 'id':'Dyson'
+            },
 # =============================================================================
-#             {
-#                 'AK':'ZGz27O8UEXkC3SEIdHAn7u6aFL1CH0u0'
-#                 , 'SK':'70CTq3TOe3x6XGuhW7RC7z9YVG4r5zuZ'
-#                 , 'id':'Dyson'
+#             {# 徐丽俊
+#                 'AK':'cXADMjz74v8vECTfW64sUKwx0o8xZCe4'
+#                 , 'SK':'xlZksrwzdmeabO7LzPGotmjjS4yegucq'
+#                 , 'id':'徐丽俊'
+#             },
+#             {# 金日超
+#                 'AK':'09GDAIA5ouDbRle9pqTtg3c2OaB6w71n'
+#                 , 'SK':'vVM0dq62nFbxrF70jIGidb8XoyBKTVsP'
+#                 , 'id':'金日超'
+#             },
+#             {# 丹燕
+#                 'AK':'DE3NnX0MGUbhzIPdG7I9NLivGaY6tR4L'
+#                 , 'SK':'7aVoGPqx8sA77y8IAAqZrCWlCMu5GRp8'
+#                 , 'id':'丹燕'
+#             },
+#             {# 胜蓝
+#                 'AK':'lVFeGEaOLeBqmXfZCnIGz89Le6YrOdTp'
+#                 , 'SK':'LdwKKrphGWKOQn2UyVEtUP4TfkLekj99'
+#                 , 'id':'胜蓝'
+#             },
+#             {# 乐乐
+#                 'AK':'6EiaeGhILmRuEhDO3Y03O3KE6aoVKzDU'
+#                 , 'SK':'WUlLRD1hmREd3jF58m6S4LLOjzBG3DMQ'
+#                 , 'id':'乐乐'
+#             },
+#             {# 泽清
+#                 'AK':'LceUeujRqgsQViSNYYAQpSP128vzm37Y'
+#                 , 'SK':'5s20UQXEt0BCiWcHp47GhGPgmMfOIMf2'
+#                 , 'id':'泽青'
 #             },
 # =============================================================================
-            {# 徐丽俊
-                'AK':'cXADMjz74v8vECTfW64sUKwx0o8xZCe4'
-                , 'SK':'xlZksrwzdmeabO7LzPGotmjjS4yegucq'
-                , 'id':'徐丽俊'
-            },
-            {# 金日超
-                'AK':'09GDAIA5ouDbRle9pqTtg3c2OaB6w71n'
-                , 'SK':'vVM0dq62nFbxrF70jIGidb8XoyBKTVsP'
-                , 'id':'金日超'
-            },
-            {# 丹燕
-                'AK':'DE3NnX0MGUbhzIPdG7I9NLivGaY6tR4L'
-                , 'SK':'7aVoGPqx8sA77y8IAAqZrCWlCMu5GRp8'
-                , 'id':'丹燕'
-            },
-            {# 胜蓝
-                'AK':'lVFeGEaOLeBqmXfZCnIGz89Le6YrOdTp'
-                , 'SK':'LdwKKrphGWKOQn2UyVEtUP4TfkLekj99'
-                , 'id':'胜蓝'
-            },
-            {# 乐乐
-                'AK':'6EiaeGhILmRuEhDO3Y03O3KE6aoVKzDU'
-                , 'SK':'WUlLRD1hmREd3jF58m6S4LLOjzBG3DMQ'
-                , 'id':'乐乐'
-            },
-            {# 泽清
-                'AK':'LceUeujRqgsQViSNYYAQpSP128vzm37Y'
-                , 'SK':'5s20UQXEt0BCiWcHp47GhGPgmMfOIMf2'
-                , 'id':'泽青'
-            },
             
             ]
     
     lock = threading.Lock()
     args_queue = queue.Queue()
     
-    i = 0
-    for d in key_list:
-        d['data'] = merged_table.reindex(range(i * 25000, (i+1) * 25000))
+    len0 = 1450
+    for i in range(20):
+        d = key_list[0].copy()
+        d['data'] = merged_table.reindex(range(i * len0, (i+1) * len0))
+        d['thread_id'] = i
         args_queue.put(d)
-        i = i + 1
-    
 
-    # 10个线程
-    for i in range(6):
+    for i in range(10):
         t = dom_clean(args_queue, lock)
         t.setDaemon(True)
         t.start()
